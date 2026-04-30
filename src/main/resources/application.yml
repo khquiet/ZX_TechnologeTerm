@@ -1,0 +1,19 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/zxkc?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+jwt:
+  # 长度至少32字节
+  secret: "ZXKC-JWT-SECRET-KEY-CHANGE-IT-1234567890"
+  expire-millis: 86400000

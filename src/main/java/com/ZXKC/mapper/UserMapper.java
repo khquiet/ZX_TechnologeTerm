@@ -9,4 +9,6 @@ public interface UserMapper {
     User selectByUsername(@Param("username") String username);
 
     User selectById(@Param("id") Long id);
+
+    int updatePassword(@Param("id") Long id, @Param("password") String password);
 }

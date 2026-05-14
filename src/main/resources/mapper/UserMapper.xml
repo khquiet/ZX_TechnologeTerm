@@ -28,4 +28,10 @@
         FROM user_info
         WHERE id = #{id}
     </select>
+
+    <update id="updatePassword">
+        UPDATE user_info
+        SET password = #{password}
+        WHERE id = #{id}
+    </update>
 </mapper>

@@ -1,6 +1,7 @@
 package com.ZXKC.service.impl;
 
 import com.ZXKC.domain.context.UserContext;
+import com.ZXKC.domain.dto.ChangePasswordRequest;
 import com.ZXKC.domain.dto.LoginRequest;
 import com.ZXKC.domain.dto.RegisterRequest;
 import com.ZXKC.domain.entity.User;
@@ -62,6 +63,25 @@ public class UserServiceImpl implements UserService {
         }
         user.setPassword(null);
         return user;
+    }
+
+    @Override
+    public void changePassword(ChangePasswordRequest request) {
+        Long userId = UserContext.getUserId();
+        if (userId == null) {
+            throw new RuntimeException("用户上下文不存在");
+        }
+        User user = userMapper.selectById(userId);
+        if (user == null) {
+            throw new RuntimeException("用户不存在");
+        }
+        if (!user.getPassword().equals(md5(request.getOldPassword()))) {
+            throw new RuntimeException("原密码错误");
+        }
+        if (request.getOldPassword().equals(request.getNewPassword())) {
+            throw new RuntimeException("新密码不能与当前密码相同");
+        }
+        userMapper.updatePassword(userId, md5(request.getNewPassword()));
     }
 
     private String md5(String rawText) {

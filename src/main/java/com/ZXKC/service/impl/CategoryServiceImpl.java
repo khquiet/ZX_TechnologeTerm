@@ -90,7 +90,7 @@ public class CategoryServiceImpl implements CategoryService {
      * @param type
      * @return
      */
-   public List<Category> list(Integer type){
+   public List<Category> list(Integer type1){
        return categoryMapper.list(type);
    }
 }

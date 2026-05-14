@@ -1,5 +1,6 @@
 package com.ZXKC.service;
 
+import com.ZXKC.domain.dto.ChangePasswordRequest;
 import com.ZXKC.domain.dto.LoginRequest;
 import com.ZXKC.domain.dto.RegisterRequest;
 import com.ZXKC.domain.entity.User;
@@ -10,4 +11,6 @@ public interface UserService {
     String login(LoginRequest request);
 
     User getCurrentUser();
+
+    void changePassword(ChangePasswordRequest request);
 }

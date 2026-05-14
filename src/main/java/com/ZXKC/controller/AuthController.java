@@ -1,6 +1,7 @@
 package com.ZXKC.controller;
 
 import com.ZXKC.annotation.IgnoreAuth;
+import com.ZXKC.domain.dto.ChangePasswordRequest;
 import com.ZXKC.domain.dto.LoginRequest;
 import com.ZXKC.domain.dto.RegisterRequest;
 import com.ZXKC.domain.entity.User;
@@ -47,5 +48,11 @@ public class AuthController {
     @GetMapping("/me")
     public ApiResponse<User> me() {
         return ApiResponse.success(userService.getCurrentUser());
+    }
+
+    @PostMapping("/password")
+    public ApiResponse<Void> changePassword(@Valid @RequestBody ChangePasswordRequest request) {
+        userService.changePassword(request);
+        return ApiResponse.success(null);
     }
 }

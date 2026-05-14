@@ -37,11 +37,7 @@ public class CategoryController {
         return Result.success();
     }
 
-    /**
-     * 分类分页查询
-     * @param categoryPageQueryDTO
-     * @return
-     */
+
     @GetMapping("/page")
     @ApiOperation("分类分页查询")
     public Result<PageResult> page(CategoryPageQueryDTO categoryPageQueryDTO){
@@ -96,7 +92,7 @@ public class CategoryController {
     @GetMapping("/list")
     @ApiOperation("根据类型查询分类")
     public Result<List<Category>> list(Integer type){
-        List<Category> list = categoryService.list(type);
-        return Result.success(list);
+        List<Category> list1 = categoryService.list(type);
+        return Result.success(list1);
     }
 }
